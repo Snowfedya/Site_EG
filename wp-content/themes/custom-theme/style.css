@@ -1,40 +1,126 @@
 /*
-Theme Name: Psychologist Theme
+Theme Name: Psychologist Pro Theme
 Author: Jules
-Description: A custom theme for a psychologist's website.
+Description: A professional and conversion-oriented theme for psychologists, based on the Perplexity project brief.
 Version: 1.0
 */
 
+:root {
+    --base-color: #F5F0E8;
+    --accent-color: #FF8C42;
+    --cta-color: #4CAF50;
+    --text-color: #333;
+    --font-family: 'Open Sans', sans-serif;
+}
+
 body {
-    font-family: 'Georgia', serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
+    font-family: var(--font-family);
+    line-height: 1.8;
+    color: var(--text-color);
+    background-color: var(--base-color);
     margin: 0;
     padding: 0;
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     max-width: 1200px;
+    padding: 2rem 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--cta-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: var(--cta-color);
+    color: #fff;
+}
+
+.card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
 }
 
 .site-header {
     background-color: #fff;
-    padding: 20px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.site-title a {
-    text-decoration: none;
-    color: #333;
-    font-size: 2em;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .site-footer {
     background-color: #333;
     color: #fff;
-    padding: 20px 0;
+    padding: 2rem 0;
     text-align: center;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-section {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Button Hover Effects */
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .services-grid, .blog-grid, .videos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-content, .contact-grid {
+        flex-direction: column;
+    }
+
+    .main-navigation {
+        display: none; /* Basic mobile menu hiding, would need JS for toggle */
+    }
 }
