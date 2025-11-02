@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying the Contact section
+ * Template part for displaying the contact section
  *
  * @package Volkova_Theme
  */
@@ -8,60 +8,35 @@
 
 <section id="contact" class="contact-section">
     <div class="container">
-        <h2 class="section-title">Свяжитесь со мной</h2>
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h3 class="contact-subtitle">Контактные данные</h3>
-                <ul>
-                    <li><i class="icon-phone"></i> <span>+7 (999) 123-45-67</span></li>
-                    <li><i class="icon-email"></i> <span>elena.volkova@psychology.com</span></li>
-                    <li><i class="icon-location"></i> <span>г. Москва, ул. Арбат, д. 1 (онлайн прием)</span></li>
-                </ul>
-                <h3 class="contact-subtitle">Я в соцсетях</h3>
-                <div class="social-links-contact">
-                    <!-- Placeholder for social links -->
-                    <a href="#">VK</a>, <a href="#">Telegram</a>, <a href="#">Instagram</a>
-                </div>
+        <h2><?php esc_html_e( 'Contact Me', 'volkovatheme' ); ?></h2>
+
+        <?php
+        // Developer Note: For more advanced forms with features like conditional logic, file uploads,
+        // and robust spam protection, consider using a dedicated forms plugin like Contact Form 7 or Gravity Forms.
+        ?>
+
+        <?php if ( isset( $_GET['form_submitted'] ) && 'true' === $_GET['form_submitted'] ) : ?>
+            <div class="contact-form-success">
+                <p><?php esc_html_e( 'Thank you for your message. I will get back to you shortly.', 'volkovatheme' ); ?></p>
             </div>
-            <div class="contact-form-wrapper">
-                <h3 class="contact-subtitle">Написать мне</h3>
-                <?php
-                /*
-                 * DEVELOPER NOTE:
-                 * The form below is a static HTML placeholder for styling purposes.
-                 * To make it functional, please install a forms plugin (e.g., Contact Form 7).
-                 * Once the plugin is active, replace the entire <form>...</form> block below
-                 * with the shortcode provided by the plugin.
-                 *
-                 * Example: echo do_shortcode( '[contact-form-7 id="your-id" title="Contact form 1"]' );
-                 */
-                ?>
-                <div class="form-placeholder">
-                    <form class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Ваше имя <span class="required">*</span></label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Телефон</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Сообщение <span class="required">*</span></label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <div class="form-group checkbox-group">
-                            <input type="checkbox" id="consent" name="consent" required>
-                            <label for="consent">Я даю согласие на обработку персональных данных</label>
-                        </div>
-                        <button type="submit" class="button button-primary">Отправить</button>
-                    </form>
+        <?php else : ?>
+            <form id="contact-form" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
+                <div class="form-group">
+                    <label for="contact-name"><?php esc_html_e( 'Name', 'volkovatheme' ); ?></label>
+                    <input type="text" id="contact-name" name="contact_name" required>
                 </div>
-            </div>
-        </div>
+                <div class="form-group">
+                    <label for="contact-email"><?php esc_html_e( 'Email', 'volkovatheme' ); ?></label>
+                    <input type="email" id="contact-email" name="contact_email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-message"><?php esc_html_e( 'Message', 'volkovatheme' ); ?></label>
+                    <textarea id="contact-message" name="contact_message" rows="5" required></textarea>
+                </div>
+                <?php wp_nonce_field( 'contact_form_nonce', 'contact_form_nonce' ); ?>
+                <input type="hidden" name="action" value="volkova_theme_handle_contact_form">
+                <button type="submit" name="contact_form_submit"><?php esc_html_e( 'Send Message', 'volkovatheme' ); ?></button>
+            </form>
+        <?php endif; ?>
     </div>
 </section>

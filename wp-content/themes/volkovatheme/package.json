@@ -1,0 +1,22 @@
+{
+  "name": "volkovatheme",
+  "version": "1.0.0",
+  "description": "A professional and calming WordPress theme for psychologist Elena Georgievna Volkova.",
+  "main": "js/main.js",
+  "scripts": {
+    "minify:css": "cleancss -o css/main.min.css css/main.css",
+    "minify:js": "uglifyjs -o js/main.min.js js/main.js",
+    "build": "npm run minify:css && npm run minify:js"
+  },
+  "keywords": [
+    "wordpress",
+    "theme"
+  ],
+  "author": "Jules",
+  "license": "GPL-2.0-or-later",
+  "dependencies": {},
+  "devDependencies": {
+    "clean-css-cli": "^5.6.0",
+    "uglify-js": "^3.17.4"
+  }
+}

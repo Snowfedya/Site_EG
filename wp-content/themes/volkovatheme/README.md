@@ -1,40 +1,52 @@
 # Volkova Theme
 
-A professional and calming WordPress theme designed for psychologist Elena Georgievna Volkova.
+A professional and calming WordPress theme for psychologist Elena Georgievna Volkova.
 
-## Установка
+## Description
 
-1.  Загрузите папку `volkovatheme` в директорию `wp-content/themes/` вашего WordPress сайта.
-2.  Перейдите в "Внешний вид" -> "Темы" в админ-панели WordPress.
-3.  Найдите "Volkova Theme" и нажмите "Активировать".
+Volkova Theme is a custom WordPress theme designed to provide a professional and calming online presence for a psychologist. It is built with a modular approach, making it easy to manage and customize content. The theme is optimized for performance and SEO, and it includes a number of features to enhance the user experience.
 
-## Настройка темы
+## Theme Setup
 
-### 1. Меню
+1.  **Installation:**
+    *   Download the theme files and upload them to the `/wp-content/themes/` directory of your WordPress installation.
+    *   Activate the theme through the 'Appearance' -> 'Themes' menu in your WordPress dashboard.
 
-Тема имеет одну область для меню — "Primary Menu". Создайте меню в разделе "Внешний вид" -> "Меню" и назначьте его этой области. Оно будет отображаться в хедере и футере.
+2.  **Required Plugins:**
+    *   This theme is designed to work with a number of plugins to provide additional functionality. It is recommended that you install the following plugins:
+        *   **Contact Form 7 or Gravity Forms:** For creating and managing forms.
+        *   **Yoast SEO:** For advanced SEO management.
+        *   **W3 Total Cache or WP Super Cache:** For caching and performance optimization.
 
-### 2. Замена контента
+3.  **Theme Options:**
+    *   The theme includes a theme options page where you can manage sitewide settings. You can access this page through the 'Appearance' -> 'Theme Options' menu in your WordPress dashboard.
+    *   The theme options page allows you to set the contact email address, phone number, and footer text.
 
-Весь контент главной страницы находится в файлах-шаблонах в папке `/template-parts/`. Для замены статичного контента на динамический из WordPress, вам потребуется редактировать эти файлы.
+## Custom Post Types
 
-*   **Hero-секция (`section-hero.php`):**
-    *   Замените изображение-плейсхолдер `images/placeholder-photo.jpg` на реальное фото. Для динамической загрузки используйте функции WordPress.
+The theme includes the following custom post types:
 
-*   **Секция "Статьи" (`section-articles.php`):**
-    *   Текущий код использует цикл-плейсхолдер. Замените его на стандартный WordPress Loop (`WP_Query`) для вывода ваших записей (постов).
-    *   Функциональность фильтров на данный момент является визуальной. Для её работы потребуется дополнительный JavaScript для взаимодействия с WordPress REST API (AJAX).
+*   **Services:** For managing the services offered by the psychologist. Each service can have a title, description, featured image, price, and duration.
+*   **Videos:** For managing video lectures. Each video can have a title, description, featured image, and a URL to the video.
+*   **Certificates:** For managing certificates and other documents. Each certificate can have a title and a featured image.
 
-*   **Секция "Видео" (`section-videos.php`):**
-    *   Как и в случае со статьями, замените плейсхолдеры на `WP_Query` для вывода кастомного типа записей "Видео" (рекомендуется создать его).
+## Build Process
 
-### 3. Интеграция плагинов
+The theme includes a build process for minifying CSS and JavaScript files. To use the build process, you will need to have Node.js and npm installed on your local machine.
 
-*   **Контактная форма (`section-contact.php`):**
-    *   В этом файле находится HTML-разметка формы. Для её работы установите плагин для форм (например, Contact Form 7).
-    *   Удалите HTML-разметку формы и вставьте на её место шорткод, сгенерированный плагином.
+1.  **Installation:**
+    *   Navigate to the theme directory in your terminal and run the following command to install the required dependencies:
+        ```
+        npm install
+        ```
 
-*   **Модальное окно записи (`footer.php`):**
-    *   В футере находится HTML-разметка для модального окна. Как и в случае с контактной формой, замените HTML-код формы на шорткод от плагина для бронирования (например, BookingPress) или контактной формы.
+2.  **Build:**
+    *   To minify the CSS and JavaScript files, run the following command:
+        ```
+        npm run build
+        ```
+    *   This will create minified versions of the `main.css` and `main.js` files in the `css` and `js` directories, respectively.
 
-Спасибо за использование Volkova Theme!
+## Contributing
+
+If you would like to contribute to the development of this theme, please feel free to fork the repository and submit a pull request.

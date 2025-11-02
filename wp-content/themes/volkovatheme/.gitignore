@@ -1,0 +1,6 @@
+# Dependencies
+/node_modules
+
+# Build artifacts
+/css/main.min.css
+/js/main.min.js

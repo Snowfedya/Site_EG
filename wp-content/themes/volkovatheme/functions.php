@@ -55,10 +55,71 @@ function volkova_theme_scripts() {
     wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@700&display=swap', array(), null );
 
     // Main Stylesheet
-    wp_enqueue_style( 'volkova-main-style', get_template_directory_uri() . '/css/main.css', array(), '1.0.0' );
+    wp_enqueue_style( 'volkova-main-style', get_template_directory_uri() . '/css/main.min.css', array(), '1.0.0' );
 
     // Main JS
-    wp_enqueue_script( 'volkova-main-script', get_template_directory_uri() . '/js/main.js', array('jquery'), '1.0.0', true );
+    wp_enqueue_script( 'volkova-main-script', get_template_directory_uri() . '/js/main.min.js', array('jquery'), '1.0.0', true );
 
 }
 add_action( 'wp_enqueue_scripts', 'volkova_theme_scripts' );
+
+/**
+ * Custom post types.
+ */
+require_once get_template_directory() . '/inc/custom-post-types.php';
+
+/**
+ * Custom fields.
+ */
+require_once get_template_directory() . '/inc/custom-fields.php';
+
+/**
+ * Theme options.
+ */
+require_once get_template_directory() . '/inc/theme-options.php';
+
+/**
+ * Contact form.
+ */
+require_once get_template_directory() . '/inc/contact-form.php';
+
+/**
+ * Performance Optimization.
+ */
+
+/**
+ * Add lazy loading to images.
+ */
+function volkova_theme_add_lazy_loading( $content ) {
+    $content = preg_replace( '/<img(.*?)src=/', '<img$1src= src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src=', $content );
+    $content = preg_replace( '/<img(.*?)srcset=/', '<img$1srcset= data-srcset=', $content );
+    $content = str_replace( '<img', '<img loading="lazy"', $content );
+    return $content;
+}
+add_filter( 'the_content', 'volkova_theme_add_lazy_loading' );
+
+/**
+ * SEO & Marketing.
+ */
+
+/**
+ * Add OpenGraph meta tags.
+ */
+function volkova_theme_add_opengraph_tags() {
+    if ( is_singular() ) {
+        global $post;
+        $image = get_the_post_thumbnail_url( $post->ID, 'full' );
+        $description = get_the_excerpt( $post->ID );
+        ?>
+        <meta property="og:title" content="<?php the_title(); ?>" />
+        <meta property="og:description" content="<?php echo esc_attr( $description ); ?>" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="<?php the_permalink(); ?>" />
+        <meta property="og:site_name" content="<?php bloginfo( 'name' ); ?>" />
+        <?php if ( $image ) : ?>
+            <meta property="og:image" content="<?php echo esc_url( $image ); ?>" />
+        <?php endif; ?>
+        <?php
+    }
+}
+add_action( 'wp_head', 'volkova_theme_add_opengraph_tags' );
