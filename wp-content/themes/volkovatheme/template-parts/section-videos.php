@@ -4,39 +4,41 @@
  *
  * @package Volkova_Theme
  */
+
+require_once get_template_directory() . '/template-parts/placeholder-data.php';
 ?>
 
 <section id="videos" class="videos-section">
     <div class="container">
-        <h2 class="section-title">Видеолекции</h2>
+        <h2 class="section-title"><?php echo esc_html( $videos_data['title'] ); ?></h2>
         <div class="videos-layout">
             <div class="video-main">
                 <div class="video-player">
                     <!-- Placeholder for the main video embed -->
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe src="<?php echo esc_url( $videos_data['main_video']['url'] ); ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
-                    <h3 class="video-title">Название основного видео</h3>
+                    <h3 class="video-title"><?php echo esc_html( $videos_data['main_video']['title'] ); ?></h3>
                     <div class="video-meta">
-                        <span>1 ноября 2025</span>
-                        <span>10,321 просмотров</span>
+                        <span><?php echo esc_html( $videos_data['main_video']['date'] ); ?></span>
+                        <span><?php echo esc_html( $videos_data['main_video']['views'] ); ?></span>
                     </div>
                 </div>
             </div>
             <div class="video-playlist">
                 <!-- Placeholder for 4 video items in the playlist -->
-                <?php for ( $i = 1; $i <= 4; $i++ ) : ?>
+                <?php foreach ( $videos_data['playlist'] as $video ) : ?>
                 <div class="video-playlist-item">
                     <div class="video-playlist-thumbnail">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/video-placeholder.jpg" alt="Название видео <?php echo $i; ?>">
-                        <span class="video-duration">10:45</span>
+                        <img src="<?php echo get_template_directory_uri(); ?>/images/video-placeholder.jpg" alt="<?php echo esc_attr( $video['title'] ); ?>">
+                        <span class="video-duration"><?php echo esc_html( $video['duration'] ); ?></span>
                     </div>
                     <div class="video-playlist-info">
-                        <h4 class="video-playlist-title">Название видео <?php echo $i; ?></h4>
-                        <span class="video-playlist-views"><?php echo 1000 * $i; ?> просмотров</span>
+                        <h4 class="video-playlist-title"><?php echo esc_html( $video['title'] ); ?></h4>
+                        <span class="video-playlist-views"><?php echo esc_html( $video['views'] ); ?></span>
                     </div>
                 </div>
-                <?php endfor; ?>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

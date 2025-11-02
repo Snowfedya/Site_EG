@@ -4,18 +4,20 @@
  *
  * @package Volkova_Theme
  */
+
+require_once get_template_directory() . '/template-parts/placeholder-data.php';
 ?>
 
 <section id="contact" class="contact-section">
     <div class="container">
-        <h2 class="section-title">Свяжитесь со мной</h2>
+        <h2 class="section-title"><?php echo esc_html( $contact_data['title'] ); ?></h2>
         <div class="contact-grid">
             <div class="contact-info">
                 <h3 class="contact-subtitle">Контактные данные</h3>
                 <ul>
-                    <li><i class="icon-phone"></i> <span>+7 (999) 123-45-67</span></li>
-                    <li><i class="icon-email"></i> <span>elena.volkova@psychology.com</span></li>
-                    <li><i class="icon-location"></i> <span>г. Москва, ул. Арбат, д. 1 (онлайн прием)</span></li>
+                    <li><i class="icon-phone"></i> <span><?php echo esc_html( $contact_data['phone'] ); ?></span></li>
+                    <li><i class="icon-email"></i> <span><?php echo esc_html( $contact_data['email'] ); ?></span></li>
+                    <li><i class="icon-location"></i> <span><?php echo esc_html( $contact_data['address'] ); ?></span></li>
                 </ul>
                 <h3 class="contact-subtitle">Я в соцсетях</h3>
                 <div class="social-links-contact">
@@ -37,7 +39,7 @@
                  */
                 ?>
                 <div class="form-placeholder">
-                    <form class="contact-form">
+                    <form class="contact-form" action="https://formspree.io/f/your_form_id" method="POST">
                         <div class="form-group">
                             <label for="name">Ваше имя <span class="required">*</span></label>
                             <input type="text" id="name" name="name" required>

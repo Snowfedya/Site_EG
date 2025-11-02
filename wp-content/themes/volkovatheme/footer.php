@@ -69,7 +69,7 @@
     <div class="modal-content">
         <button class="close-modal" aria-label="Close modal">&times;</button>
         <h3 class="modal-title">Запишитесь на консультацию</h3>
-        <form class="modal-form">
+        <form class="modal-form" action="https://formspree.io/f/your_form_id" method="POST">
             <!-- This would be a shortcode for a booking/contact form plugin -->
             <div class="form-group">
                 <label for="modal-name">Ваше имя <span class="required">*</span></label>
