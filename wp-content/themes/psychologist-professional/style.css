@@ -1,0 +1,51 @@
+/*
+Theme Name: Psychologist Professional - Профессиональный психолог
+Theme URI: https://your-psychology-site.com
+Description: Профессиональная тема WordPress для психологов с системой записи на консультацию, управлением услугами и клиентами. Включает кастомные типы записей, AJAX формы, GDPR совместимость и современный дизайн в успокаивающих тонах.
+Author: Psychologist Pro Team
+Version: 1.0.0
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: psychologist-pro
+Domain Path: /languages
+Tags: psychology, therapy, health, medical, appointment, booking, custom-post-types, responsive-design
+
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.4
+
+Основные стили подключаются из assets/css/style.css
+*/
+
+/* Критический CSS для быстрой загрузки */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Быстрая загрузка навигации */
+.site-header {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.main-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
